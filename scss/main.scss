@@ -1,0 +1,782 @@
+@use 'config';
+
+$font-family: 'Roboto', sans-serif;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-bold: 500;
+$font-size: 18px;
+
+$color-background-primary: #F6F6F6;
+$color-background-secondary: #d7dde6;
+$color-text-primary: #333333;
+$color-text-secondary: #A6A6A6;
+$color-text-tertiary: #ECAD00;
+$color-nav: #3b434c;
+
+$spacing-1: 0.25rem;
+$spacing-2: 0.5rem;
+$spacing-3: 1rem;
+$spacing-4: 2rem;
+$spacing-5: 4rem;
+$spacing-6: 8rem;
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    font-weight: $font-weight-regular;
+    color: $color-text-primary;
+    background-color: $color-background-primary;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header[role="banner"] {
+    display: none;
+}
+
+@keyframes hero-animation {
+    0% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(+2px);
+    }
+}
+
+#copyright {
+    text-align: center;
+    font-size: 1rem;
+    padding: $spacing-3;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn {
+    padding: $spacing-1 $spacing-4 !important;
+    border: 1px solid $color-text-tertiary;
+    border-radius: 3px;
+    background-color: $color-text-tertiary;
+    color: $color-background-primary !important;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background-color: lighten($color-text-tertiary, 15%);
+        transform: scale(1.1);
+    }
+    &::after {
+        height: 0 !important;
+    }
+    position: relative;
+    &:has(ion-icon) > ion-icon {
+        position: absolute;
+        right: 20%;
+        top: 50%;
+        font-size: 1.3rem;
+        transform: translateY(-50%);
+    }
+    &:has(ion-icon) {
+        padding: $spacing-1 calc($spacing-4 + 1rem) $spacing-1 $spacing-4 !important;
+    }
+}
+
+#nav-logo {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+}
+
+header {
+    width: 100%;
+    & > nav {
+        width: 100%;
+        height: 50px;
+        background-color: rgba(lighten($color-nav, 60%), 0.8);
+        backdrop-filter: blur(30px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 101;
+        & > .container {
+            display: grid;
+            grid-template-columns: 10% 1fr;
+            height: 100%;
+            align-items: center;
+            & > ion-icon {
+                display: none;
+                cursor: pointer;
+                font-size: 2.5rem;
+            }
+            & > a {
+                text-decoration: none;
+                margin-top: 5px;
+                & > img {
+                    width: 70px;
+                    height: auto;
+                }
+            }
+            & > ul {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                justify-items: end;
+                & > li {
+                    list-style: none;
+                    & > a {
+                        text-decoration: none;
+                        color: $color-text-primary;
+                        font-weight: $font-weight-bold;
+                        font-size: $font-size;
+                        padding: $spacing-2;
+                        transition: all 0.3s ease-in-out;
+                        position: relative;
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            bottom: 4px;
+                            left: 0;
+                            width: 0;
+                            height: 3px;
+                            background-color: $color-text-tertiary;
+                            transition: all 0.3s ease-in-out;
+                        }
+                        &:hover {
+                            color: $color-text-tertiary;
+                            &:hover::after {
+                                position: absolute;
+                                content: '';
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    & > .mobile-nav {
+        display: hidden;
+        position: fixed;
+        width: 65%;
+        height: 100vh;
+        background-color: $color-background-primary;
+        top: 0;
+        right: -70%;
+        border-left: 1px solid lighten($color-background-primary, 10%);
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 0, 0, 0.6);
+        z-index: 100;
+        transition: all 0.3s ease-in-out;
+        & > ul {
+            margin: $spacing-5 $spacing-6 0 0;
+            list-style: none;
+            display: grid;
+            grid-gap: $spacing-3;
+            width: 85%;
+            text-align: end;
+            & > li {
+                margin-bottom: $spacing-3;
+                width: 100%;
+                & > a {
+                    text-decoration: none;
+                    color: $color-text-primary;
+                    font-weight: $font-weight-bold;
+                    font-size: $font-size;
+                    transition: all 0.3s ease-in-out;
+                    position: relative;
+                }
+            }
+        }
+    }
+    & > .hero {
+        height: auto;
+        margin: $spacing-6 auto $spacing-5 auto;
+        & > h1 {
+            font-size: 2.5rem;
+            font-weight: $font-weight-regular;
+            text-align: center;
+            margin-bottom: $spacing-3;
+            text-transform: uppercase;
+            & > span {
+                color: $color-text-tertiary;
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 1px;
+                    left: 0;
+                    height: 2px;
+                    width: 80%;
+                    margin-left: 10%;
+                    background-color: $color-text-tertiary;
+                }
+            }
+        }
+        & > p {
+            font-size: 1.2rem;
+            font-weight: $font-weight-light;
+            text-align: center;
+            margin-bottom: $spacing-5;
+        }
+        & > img {
+            width: 100%;
+            height: auto;
+            margin-bottom: $spacing-5;
+            transition: transform 2s ease-in-out;
+            animation: hero-animation 3s ease-in-out infinite alternate;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+        & > .btn {
+            padding: $spacing-2 calc($spacing-5 + 1.5rem) $spacing-2 $spacing-5 !important;
+            margin: 0 auto;
+            display: block;
+            width: fit-content;
+            border-radius: 25px;
+            & > ion-icon {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    & > .about-us {
+        // background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('../../res/wallpaperflare.com_wallpaper (1).jpg');
+        // stock-trading-g1fed35b12_1920
+        background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('../../res/stock-trading-g1fed35b12_1920.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+
+        color: $color-background-primary;
+        padding: $spacing-5 0;
+        & > .container > .content {
+            & > h2 {
+                font-size: 2.5rem;
+                font-weight: $font-weight-regular;
+                text-align: center;
+                margin-bottom: $spacing-3;
+                text-transform: uppercase;
+            }
+            & > p {
+                font-size: 1.2rem;
+                font-weight: $font-weight-light;
+                text-align: center;
+            }
+        }
+    }
+}
+
+#services {
+    padding: $spacing-5 0;
+    & > .container {
+        & > h2 {
+            font-size: 2.5rem;
+            font-weight: $font-weight-regular;
+            margin-bottom: $spacing-3;
+            text-transform: uppercase;
+            position: relative;
+            width: fit-content;
+            margin: 0 auto $spacing-5 auto;
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 3px;
+                width: 90%;
+                margin-left: 5%;
+                background-color: $color-text-tertiary;
+            }
+        }
+        & > .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 100%;
+            grid-gap: $spacing-5;
+            & > .service {
+                width: 100%;
+                height: auto;
+                background-color: lighten($color-background-secondary, 5%);
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 5px 15px 0px;
+                border: 1px solid rgba(0, 0, 0, 0.15);
+                border-radius: 3px;
+                overflow: hidden;
+                transition: all 0.3s ease-in-out;
+                & > img {
+                    width: 100%;
+                    height: 200px;
+                    margin-bottom: $spacing-3;
+                }
+                & > h3 {
+                    font-size: 1.5rem;
+                    font-weight: $font-weight-bold;
+                    margin-bottom: $spacing-3;
+                    margin-left: $spacing-3;
+                }
+                & > p {
+                    font-size: 1.1rem;
+                    font-weight: $font-weight-light;
+                    margin-bottom: $spacing-4;
+                    margin-left: $spacing-3;
+                }
+                &:hover {
+                    transform: scale(1.05);
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+                }
+            }
+        }
+    }
+}
+
+#reviews {
+    padding: $spacing-5 0;
+    background-color: lighten($color-background-secondary, 7%);
+    & > .container {
+        & > h2 {
+            font-size: 2.5rem;
+            font-weight: $font-weight-regular;
+            text-transform: uppercase;
+            width: fit-content;
+            margin: 0 auto $spacing-3 auto;
+            & > span {
+                color: $color-text-tertiary;
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    height: 3px;
+                    width: 90%;
+                    margin-left: 5%;
+                    background-color: $color-text-tertiary;
+                }
+            }
+        }
+        & > p {
+            font-size: 1.2rem;
+            font-weight: $font-weight-light;
+            text-align: center;
+            margin-bottom: $spacing-5;
+        }
+        & > .review {
+            display: grid;
+            grid-template-rows: 2fr .7fr;
+            & > p {
+                width: 60%;
+                margin: 0 auto $spacing-2 auto;
+                text-align: center;
+                font-size: 1.5rem;
+            }
+            & > h3 {
+                text-align: center;
+                font-size: 1.65rem;
+                font-weight: $font-weight-regular;
+                margin-bottom: $spacing-2;
+                font-style: italic;
+                color: $color-text-tertiary;
+            }
+        }
+        & > .dottes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & > .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: $color-text-tertiary;
+                margin: 0 5px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}
+
+footer {
+    // background-color: $color-background-secondary;
+    background-color: darken($color-background-secondary, 50%);
+    padding: $spacing-5 0;
+    color: $color-background-primary;
+    position: relative;
+    & > .container {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        grid-gap: $spacing-5;
+        & > .join {
+            & > h2 {
+                font-size: 2.5rem;
+                font-weight: $font-weight-regular;
+                text-transform: uppercase;
+                margin-bottom: $spacing-3;
+                color: $color-text-tertiary;
+            }
+            & > p {
+                font-size: 1.2rem;
+                font-weight: $font-weight-light;
+                margin-bottom: $spacing-4;
+            }
+            & > .btn {
+                padding: $spacing-2 $spacing-5 !important;
+                border: none;
+                background-color: $color-text-tertiary;
+                color: $color-background-primary;
+                font-size: 1.2rem;
+                font-weight: $font-weight-regular;
+                border-radius: 3px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                &:hover {
+                    background-color: lighten($color-text-tertiary, 5%);
+                }
+            }
+        }
+        & > .contact {
+            justify-self: end;
+            & > ul {
+                margin-top: $spacing-3;
+                list-style: none;;
+                & > li {
+                    width: 350px;
+                    height: 43px;
+                    display: grid;
+                    grid-template-columns: 1fr 3fr;
+                    align-items: center;
+                    & > a {
+                        color: $color-background-primary;
+                        font-size: 1.2rem;
+                        font-weight: $font-weight-light;
+                        transition: all 0.3s ease-in-out;
+                        &:hover {
+                            color: $color-text-tertiary;
+                        }
+                    }
+                }
+            }
+            & > .social {
+                margin-top: $spacing-4;
+                & > a {
+                    color: $color-background-primary;
+                    font-size: 1.2rem;
+                    font-weight: $font-weight-light;
+                    transition: all 0.3s ease-in-out;
+                    text-decoration: none;
+                    &:hover {
+                        color: $color-text-tertiary;
+                    }
+                    & > ion-icon {
+                        font-size: 2rem;
+                        margin-right: $spacing-3;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 768px;
+    }
+
+    header {
+        & > nav {
+            & > .container {
+                & > ul {
+                    & > li {
+                        & > a {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+        & > .hero {
+            & > h1 {
+                font-size: 2rem;
+            }
+            & > p {
+                font-size: 1rem;
+                margin-bottom: $spacing-3;
+            }
+            & > img {
+                margin-bottom: $spacing-4;
+            }
+        }
+        & > .about-us {
+            padding: 3rem 0;
+            & > .container {
+                & > .content {
+                    & > h2 {
+                        font-size: 1.8rem;
+                    }
+                    & > p {
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    #services {
+        padding: 3rem 0;
+        & > .container {
+            & > h2 {
+                font-size: 2rem;
+                margin-bottom: $spacing-4;
+            }
+            & > .services-grid {
+                grid-gap: $spacing-4;
+                & > .service {
+                    & > img {
+                        margin-bottom: $spacing-3;
+                        height: 150px;
+                    }
+                    & > h3 {
+                        font-size: 1.3rem;
+                        margin-bottom: $spacing-2;
+                    }
+                    & > p {
+                        font-size: 0.9rem;
+                        margin-bottom: $spacing-3;
+                    }
+                }
+            }
+        }
+    }
+
+    #reviews {
+        padding: 3rem 0;
+        & > .container {
+            & > h2 {
+                font-size: 2rem;
+                margin-bottom: $spacing-3;
+            }
+            & > p {
+                margin-bottom: $spacing-4;
+            }
+            & > .review {
+                & > p {
+                    font-size: 1.2rem;
+                }
+                & > h3 {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
+    footer {
+        padding: $spacing-4 0;
+        & > .container {
+            grid-gap: $spacing-4;
+            & > .join {
+                & > h2 {
+                    font-size: 2rem;
+                }
+                & > p {
+                    font-size: 1rem;
+                    margin-bottom: $spacing-3;
+                }
+                & > .btn {
+                    padding: $spacing-1 $spacing-4 !important;
+                    font-size: 1rem;
+                }
+            }
+            & > .contact {
+                align-content: center;
+                & > ul {
+                    margin-top: 0;
+                    & > li {
+                        width: 300px;
+                        & > a {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+                & > .social {
+                    margin-top: $spacing-3;
+                    & > a {
+                        font-size: 1rem;
+                        & > ion-icon {
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    header {
+        & > nav {
+            height: 45px;
+            & > .container {
+                grid-template-columns: 1fr 1fr;
+                width: 90%;
+                & > ion-icon {
+                    display: block;
+                    justify-self: end;
+                    margin-right: $spacing-3;
+                }
+                & > img {
+                    width: 60px;
+                }
+                & > ul {
+                    display: none;
+                }
+            }
+        }
+        & > .mobile-nav {
+            display: fblock;
+            
+        }
+        & > .hero {
+            margin: calc($spacing-6 - 2rem) auto calc($spacing-4 + 0.5rem) auto;
+            & > h1 {
+                font-size: 1.5rem;
+            }
+            & > p {
+                font-size: 0.8rem;
+                margin-bottom: $spacing-4;
+            }
+            & > img {
+                margin-bottom: $spacing-4;
+            }
+            & > a {
+                padding: $spacing-1 $spacing-3;
+                font-size: 0.85rem;
+            }
+        }
+        & > .about-us {
+            padding: 2rem 0;
+            & > .container {
+                & > .content {
+                    & > h2 {
+                        font-size: 1.5rem;
+                    }
+                    & > p {
+                        font-size: .85rem;
+                    }
+                }
+            }
+        }
+    }
+
+    #services {
+        padding: 2rem 0;
+        & > .container {
+            & > h2 {
+                font-size: 1.5rem;
+                margin-bottom: $spacing-4;
+            }
+            & > .services-grid {
+                grid-gap: calc($spacing-4 + 0.5rem);
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(3, 1fr);
+                & > .service {
+                    width: 80%;
+                    margin: 0 auto;
+                    border-radius: 5px;
+                    & > img {
+                        margin-bottom: $spacing-2;
+                    }
+                    & > h3 {
+                        font-size: 1.1rem;
+                        margin-bottom: $spacing-2;
+                    }
+                    & > p {
+                        font-size: 0.8rem;
+                        margin-bottom: calc($spacing-3 + 0.5rem);
+                    }
+                }
+            }
+        }
+    }
+
+    #reviews {
+        padding: 2rem 0;
+        & > .container {
+            & > h2 {
+                font-size: 1.5rem;
+                margin-bottom: $spacing-2;
+            }
+            & > p {
+                margin-bottom: calc($spacing-3 + 0.5rem);
+                font-size: 0.85rem;
+            }
+            & > .review {
+                & > p {
+                    font-size: 1rem;
+                }
+                & > h3 {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+
+    footer {
+        padding: $spacing-3 0 calc($spacing-5 - 1rem) 0;
+        & > .container {
+            grid-gap: $spacing-3;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr);
+            & > .join {
+                & > h2 {
+                    font-size: 1.5rem;
+                }
+                & > p {
+                    font-size: 0.8rem;
+                    margin-bottom: $spacing-3;
+                }
+                & > .btn {
+                    padding: $spacing-1 calc($spacing-3 + .75rem) !important;
+                    font-size: 0.8rem;
+                }
+            }
+            & > .contact {
+                display: grid;
+                grid-template-columns: 3fr 1fr;
+                & > ul {
+                    margin-top: 0;
+                    & > li {
+                        width: 300px;
+                        font-size: 0.75rem;
+                    }
+                }
+                & > .social {
+                    margin-top: $spacing-2;
+                    margin-left: $spacing-4;
+                    & > a {
+                        font-size: 1.4rem;
+                        margin-bottom: $spacing-3;
+                        & > ion-icon {
+                            font-size: inherit;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #copyright {
+        font-size: 0.8rem;
+    }
+}

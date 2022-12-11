@@ -1,0 +1,732 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.non-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+   supported by Chrome and Opera */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stars {
+  margin: 10px auto 30px auto;
+}
+
+.stars > ion-icon {
+  color: #ff9500;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #333333;
+  background-color: #F6F6F6;
+  min-height: 100vh;
+  line-height: 1.5;
+  background-image: url(../../res/0pL21gZCQQa3seHVSLfZ_s76E7OdU44lO9KEI.png);
+  background-size: 1700px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header[role=banner] {
+  display: none;
+}
+
+@keyframes hero-animation {
+  0% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(2px);
+  }
+}
+#copyright {
+  text-align: center;
+  font-size: 1rem;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn {
+  padding: 0.25rem 2rem !important;
+  border: 1px solid #ECAD00;
+  border-radius: 3px;
+  background-color: #ECAD00;
+  color: #F6F6F6 !important;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+.btn:hover {
+  background-color: #ffca3a;
+  transform: scale(1.1);
+}
+.btn::after {
+  height: 0 !important;
+}
+.btn:has(ion-icon) > ion-icon {
+  position: absolute;
+  right: 20%;
+  top: 50%;
+  font-size: 1.3rem;
+  transform: translateY(-50%);
+}
+.btn:has(ion-icon) {
+  padding: 0.25rem 3rem 0.25rem 2rem !important;
+}
+
+#nav-logo {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+header {
+  width: 100%;
+}
+header > nav {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(216, 220, 225, 0.8);
+  backdrop-filter: blur(30px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+}
+header > nav > .container {
+  display: grid;
+  grid-template-columns: 10% 1fr;
+  height: 100%;
+  align-items: center;
+}
+header > nav > .container > ion-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 2.5rem;
+}
+header > nav > .container > a {
+  text-decoration: none;
+  margin-top: 5px;
+}
+header > nav > .container > a > img {
+  width: 70px;
+  height: auto;
+}
+header > nav > .container > ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: end;
+}
+header > nav > .container > ul > li {
+  list-style: none;
+}
+header > nav > .container > ul > li > a {
+  text-decoration: none;
+  color: #333333;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 0.5rem;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+header > nav > .container > ul > li > a::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #ECAD00;
+  transition: all 0.3s ease-in-out;
+}
+header > nav > .container > ul > li > a:hover {
+  color: #ECAD00;
+}
+header > nav > .container > ul > li > a:hover:hover::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+}
+header > .mobile-nav {
+  display: hidden;
+  position: fixed;
+  width: 65%;
+  height: 100vh;
+  background-color: #F6F6F6;
+  top: 0;
+  right: -70%;
+  border-left: 1px solid white;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+}
+header > .mobile-nav > ul {
+  margin: 4rem 8rem 0 0;
+  list-style: none;
+  display: grid;
+  grid-gap: 1rem;
+  width: 85%;
+  text-align: end;
+}
+header > .mobile-nav > ul > li {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+header > .mobile-nav > ul > li > a {
+  text-decoration: none;
+  color: #333333;
+  font-weight: 500;
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+header > .hero {
+  height: auto;
+  margin: 8rem auto 4rem auto;
+  color: white;
+}
+header > .hero > h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+header > .hero > h1 > span {
+  color: #ECAD00;
+  position: relative;
+}
+header > .hero > h1 > span::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  height: 2px;
+  width: 80%;
+  margin-left: 10%;
+  background-color: #ECAD00;
+}
+header > .hero > p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+header > .hero > img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 4rem;
+  transition: transform 2s ease-in-out;
+  animation: hero-animation 3s ease-in-out infinite alternate;
+}
+header > .hero > img:hover {
+  transform: scale(1.1);
+}
+header > .hero > .btn {
+  padding: 0.5rem 5.5rem 0.5rem 4rem !important;
+  margin: 0 auto;
+  display: block;
+  width: fit-content;
+  border-radius: 25px;
+}
+header > .hero > .btn > ion-icon {
+  font-size: 1.5rem;
+}
+header > .about-us {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../res/lose-money-forex-header-image.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
+  color: #F6F6F6;
+  padding: 4rem 0;
+}
+header > .about-us > .container > .content > h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+header > .about-us > .container > .content > p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+#services {
+  padding: 4rem 0;
+}
+#services > .container > h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto 4rem auto;
+  color: white;
+}
+#services > .container > h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 90%;
+  margin-left: 5%;
+  background-color: #ECAD00;
+}
+#services > .container > .services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  grid-gap: 4rem;
+}
+#services > .container > .services-grid > .service {
+  width: 100%;
+  height: auto;
+  background-color: #e7eaf0;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 5px 15px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+#services > .container > .services-grid > .service > img {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 1rem;
+}
+#services > .container > .services-grid > .service > h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+#services > .container > .services-grid > .service > p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+}
+#services > .container > .services-grid > .service:hover {
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#reviews {
+  padding: 4rem 0;
+  background-color: #edf0f4;
+}
+#reviews > .container > h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  width: fit-content;
+  margin: 0 auto 1rem auto;
+}
+#reviews > .container > h2 > span {
+  color: #ECAD00;
+  position: relative;
+}
+#reviews > .container > h2 > span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 90%;
+  margin-left: 5%;
+  background-color: #ECAD00;
+}
+#reviews > .container > p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+#reviews > .container > .review {
+  display: grid;
+  grid-template-rows: 2fr 0.7fr;
+}
+#reviews > .container > .review > p {
+  width: 60%;
+  margin: 0 auto 0.5rem auto;
+  text-align: center;
+  font-size: 1.5rem;
+}
+#reviews > .container > .review > h3 {
+  text-align: center;
+  font-size: 1.65rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  color: #ECAD00;
+}
+#reviews > .container > .dottes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#reviews > .container > .dottes > .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ECAD00;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+#reviews > .container > .dottes > .dot:hover {
+  transform: scale(1.2);
+}
+
+footer {
+  background-color: #495b75;
+  padding: 4rem 0;
+  color: #F6F6F6;
+  position: relative;
+}
+footer > .container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-gap: 4rem;
+}
+footer > .container > .join > h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #ECAD00;
+}
+footer > .container > .join > p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+footer > .container > .join > .btn {
+  padding: 0.5rem 4rem !important;
+  border: none;
+  background-color: #ECAD00;
+  color: #F6F6F6;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+footer > .container > .join > .btn:hover {
+  background-color: #ffbd07;
+}
+footer > .container > .contact {
+  justify-self: end;
+}
+footer > .container > .contact > ul {
+  margin-top: 1rem;
+  list-style: none;
+}
+footer > .container > .contact > ul > li {
+  width: 350px;
+  height: 43px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+}
+footer > .container > .contact > ul > li > a {
+  color: #F6F6F6;
+  font-size: 1.2rem;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+}
+footer > .container > .contact > ul > li > a:hover {
+  color: #ECAD00;
+}
+footer > .container > .contact > .social {
+  margin-top: 2rem;
+}
+footer > .container > .contact > .social > a {
+  color: #F6F6F6;
+  font-size: 1.2rem;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+footer > .container > .contact > .social > a:hover {
+  color: #ECAD00;
+}
+footer > .container > .contact > .social > a > ion-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 768px;
+  }
+  header > nav > .container > ul > li > a {
+    font-size: 16px;
+  }
+  header > .hero > h1 {
+    font-size: 2rem;
+  }
+  header > .hero > p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  header > .hero > img {
+    margin-bottom: 2rem;
+  }
+  header > .about-us {
+    padding: 3rem 0;
+  }
+  header > .about-us > .container > .content > h2 {
+    font-size: 1.8rem;
+  }
+  header > .about-us > .container > .content > p {
+    font-size: 1.1rem;
+  }
+  #services {
+    padding: 3rem 0;
+  }
+  #services > .container > h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  #services > .container > .services-grid {
+    grid-gap: 2rem;
+  }
+  #services > .container > .services-grid > .service > img {
+    margin-bottom: 1rem;
+    height: 150px;
+  }
+  #services > .container > .services-grid > .service > h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  #services > .container > .services-grid > .service > p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  #reviews {
+    padding: 3rem 0;
+  }
+  #reviews > .container > h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  #reviews > .container > p {
+    margin-bottom: 2rem;
+  }
+  #reviews > .container > .review > p {
+    font-size: 1.2rem;
+  }
+  #reviews > .container > .review > h3 {
+    font-size: 1.5rem;
+  }
+  footer {
+    padding: 2rem 0;
+  }
+  footer > .container {
+    grid-gap: 2rem;
+  }
+  footer > .container > .join > h2 {
+    font-size: 2rem;
+  }
+  footer > .container > .join > p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  footer > .container > .join > .btn {
+    padding: 0.25rem 2rem !important;
+    font-size: 1rem;
+  }
+  footer > .container > .contact {
+    align-content: center;
+  }
+  footer > .container > .contact > ul {
+    margin-top: 0;
+  }
+  footer > .container > .contact > ul > li {
+    width: 300px;
+  }
+  footer > .container > .contact > ul > li > a {
+    font-size: 1rem;
+  }
+  footer > .container > .contact > .social {
+    margin-top: 1rem;
+  }
+  footer > .container > .contact > .social > a {
+    font-size: 1rem;
+  }
+  footer > .container > .contact > .social > a > ion-icon {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+  header > nav {
+    height: 45px;
+  }
+  header > nav > .container {
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+  }
+  header > nav > .container > ion-icon {
+    display: block;
+    justify-self: end;
+    margin-right: 1rem;
+  }
+  header > nav > .container > img {
+    width: 60px;
+  }
+  header > nav > .container > ul {
+    display: none;
+  }
+  header > .mobile-nav {
+    display: fblock;
+  }
+  header > .hero {
+    margin: 6rem auto 2.5rem auto;
+  }
+  header > .hero > h1 {
+    font-size: 1.5rem;
+  }
+  header > .hero > p {
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  header > .hero > img {
+    margin-bottom: 2rem;
+  }
+  header > .hero > a {
+    padding: 0.25rem 1rem;
+    font-size: 0.85rem;
+  }
+  header > .about-us {
+    padding: 2rem 0;
+  }
+  header > .about-us > .container > .content > h2 {
+    font-size: 1.5rem;
+  }
+  header > .about-us > .container > .content > p {
+    font-size: 0.85rem;
+  }
+  #services {
+    padding: 2rem 0;
+  }
+  #services > .container > h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  #services > .container > .services-grid {
+    grid-gap: 2.5rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+  #services > .container > .services-grid > .service {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+  #services > .container > .services-grid > .service > img {
+    margin-bottom: 0.5rem;
+  }
+  #services > .container > .services-grid > .service > h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  #services > .container > .services-grid > .service > p {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  #reviews {
+    padding: 2rem 0;
+  }
+  #reviews > .container > h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  #reviews > .container > p {
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+  }
+  #reviews > .container > .review > p {
+    font-size: 1rem;
+  }
+  #reviews > .container > .review > h3 {
+    font-size: 1.2rem;
+  }
+  footer {
+    padding: 1rem 0 3rem 0;
+  }
+  footer > .container {
+    grid-gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  footer > .container > .join > h2 {
+    font-size: 1.5rem;
+  }
+  footer > .container > .join > p {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  footer > .container > .join > .btn {
+    padding: 0.25rem 1.75rem !important;
+    font-size: 0.8rem;
+  }
+  footer > .container > .contact {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+  footer > .container > .contact > ul {
+    margin-top: 0;
+  }
+  footer > .container > .contact > ul > li {
+    width: 300px;
+    font-size: 0.75rem;
+  }
+  footer > .container > .contact > .social {
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+  }
+  footer > .container > .contact > .social > a {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  footer > .container > .contact > .social > a > ion-icon {
+    font-size: inherit;
+  }
+  #copyright {
+    font-size: 0.8rem;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
