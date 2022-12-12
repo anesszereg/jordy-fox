@@ -59,7 +59,7 @@ header[role=banner] {
     transform: translateY(2px);
   }
 }
-#copyright {
+.copyright {
   text-align: center;
   font-size: 1rem;
   padding: 1rem;
@@ -67,6 +67,31 @@ header[role=banner] {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  color: #fff;
+  background-color: #000;
+  cursor: pointer;
+
+}
+
+.copyright:hover{
+  color: rgba(163, 161, 161, 0.538);
+  transition: all 0.3s ease-in-out;
+}
+.text-crypto{
+  color: #e7eaf0;
+  margin-top: 60px;
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-left: 20px;
+}
+#crypto_description{
+  margin-top: 20px;
+  font-size: 14px;
+  /* width: 70rem; */
+  padding: 5px;
 }
 
 .btn {
@@ -407,7 +432,7 @@ header > .about-us > .container > .content > p {
 }
 
 footer {
-  background-color: #495b75;
+  background-color: #000;
   padding: 4rem 0;
   color: #F6F6F6;
   position: relative;
