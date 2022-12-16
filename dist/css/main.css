@@ -59,6 +59,16 @@ header[role=banner] {
     transform: translateY(2px);
   }
 }
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+}
+#title-text{
+  font-size: 2rem;
+}
 .copyright {
   text-align: center;
   font-size: 1rem;
@@ -76,6 +86,7 @@ header[role=banner] {
 .copyright:hover{
   color: rgba(163, 161, 161, 0.538);
   transition: all 0.3s ease-in-out;
+  border:none;
 }
 .text-crypto{
   color: #e7eaf0;
@@ -93,17 +104,28 @@ header[role=banner] {
   /* width: 70rem; */
   padding: 5px;
 }
+.btn-mobile {
+  text-align: center;
+  border: none;
+  border-radius: 30px;
+  background-color: #ECAD00;
+  color: #000 !important;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  margin-left: 17px;
+}
 
 .btn {
   padding: 0.25rem 2rem !important;
-  border: 1px solid #ECAD00;
-  border-radius: 3px;
+  border: none;
+  border-radius: 30px;
   background-color: #ECAD00;
-  color: #F6F6F6 !important;
+  color: #000 !important;
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   position: relative;
+  
 }
 .btn:hover {
   background-color: #ffca3a;
@@ -137,18 +159,20 @@ header {
 header > nav {
   width: 100%;
   height: 50px;
-  background-color: rgba(216, 220, 225, 0.8);
+  /* background-color: #fefefefe; */
   backdrop-filter: blur(30px);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 101;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+
 }
 header > nav > .container {
-  display: grid;
-  grid-template-columns: 10% 1fr;
-  height: 100%;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 header > nav > .container > ion-icon {
   display: none;
@@ -164,16 +188,16 @@ header > nav > .container > a > img {
   height: auto;
 }
 header > nav > .container > ul {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: end;
+ display: flex;
+ 
 }
 header > nav > .container > ul > li {
   list-style: none;
+  margin-right: 10px;
 }
 header > nav > .container > ul > li > a {
   text-decoration: none;
-  color: #333333;
+  color: #F6F6F6;
   font-weight: 500;
   font-size: 18px;
   padding: 0.5rem;
@@ -201,16 +225,17 @@ header > nav > .container > ul > li > a:hover:hover::after {
 header > .mobile-nav {
   display: hidden;
   position: fixed;
-  width: 65%;
+  width: 30%;
   height: 100vh;
-  background-color: #F6F6F6;
+  background-color: #fff;
   top: 0;
-  right: -70%;
-  border-left: 1px solid white;
+  right: -75%;
+  /* border-left: 1px solid white; */
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 0, 0, 0.6);
   z-index: 100;
   transition: all 0.3s ease-in-out;
 }
+
 header > .mobile-nav > ul {
   margin: 4rem 8rem 0 0;
   list-style: none;
@@ -218,6 +243,7 @@ header > .mobile-nav > ul {
   grid-gap: 1rem;
   width: 85%;
   text-align: end;
+  margin-bottom: 40px;
 }
 header > .mobile-nav > ul > li {
   margin-bottom: 1rem;
@@ -225,12 +251,13 @@ header > .mobile-nav > ul > li {
 }
 header > .mobile-nav > ul > li > a {
   text-decoration: none;
-  color: #333333;
+  color: #000;
   font-weight: 500;
   font-size: 18px;
   transition: all 0.3s ease-in-out;
-  position: relative;
+  /* position: relative;/ */
 }
+
 header > .hero {
   height: auto;
   margin: 8rem auto 4rem auto;
@@ -243,11 +270,11 @@ header > .hero > h1 {
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
-header > .hero > h1 > span {
+header > .hero > .title > h1 > span {
   color: #ECAD00;
-  position: relative;
+  /* position: relative; */
 }
-header > .hero > h1 > span::after {
+/* header > .hero > .title > h1 > span::after {
   content: "";
   position: absolute;
   bottom: 1px;
@@ -256,7 +283,7 @@ header > .hero > h1 > span::after {
   width: 80%;
   margin-left: 10%;
   background-color: #ECAD00;
-}
+} */
 header > .hero > p {
   font-size: 1.2rem;
   font-weight: 300;
@@ -516,7 +543,7 @@ footer > .container > .contact > .social > a > ion-icon {
   header > nav > .container > ul > li > a {
     font-size: 16px;
   }
-  header > .hero > h1 {
+  header > .hero >  h1 {
     font-size: 2rem;
   }
   header > .hero > p {
@@ -612,7 +639,7 @@ footer > .container > .contact > .social > a > ion-icon {
     font-size: 1.5rem;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .container {
     width: 90%;
   }
@@ -634,23 +661,27 @@ footer > .container > .contact > .social > a > ion-icon {
   header > nav > .container > ul {
     display: none;
   }
+  header > nav > .container > .btn {
+    display: none;
+  }
   header > .mobile-nav {
-    display: fblock;
+    display: block;
   }
   header > .hero {
     margin: 6rem auto 2.5rem auto;
   }
-  header > .hero > h1 {
-    font-size: 1.5rem;
+  header > .hero > .title > h1 {
+    font-size: 1rem;
+    width: auto;
   }
-  header > .hero > p {
+  header > .hero > .title > p {
     font-size: 0.8rem;
     margin-bottom: 2rem;
   }
-  header > .hero > img {
+  header > .hero > .title >  img {
     margin-bottom: 2rem;
   }
-  header > .hero > a {
+  header > .hero >  a {
     padding: 0.25rem 1rem;
     font-size: 0.85rem;
   }
@@ -749,8 +780,22 @@ footer > .container > .contact > .social > a > ion-icon {
   footer > .container > .contact > .social > a > ion-icon {
     font-size: inherit;
   }
-  #copyright {
+  .copyright {
     font-size: 0.8rem;
+    border: none;
+  }
+  .copyright:hover{
+    color: rgba(163, 161, 161, 0.538);
+    transition: all 0.3s ease-in-out;
+    border:none;
+
+  }
+  .text-crypto{
+    padding: 10px;
+  }
+  #crypto_description{
+    width: 20rem ;
+    margin-left: 10px;
   }
 }
 
